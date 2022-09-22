@@ -1,0 +1,120 @@
+{% extends "health/base.html" %}
+{% block content %}
+<style>
+  body {
+    background-image: url('https://i.pinimg.com/736x/cb/58/e4/cb58e4dd22d21d53f3677d551a581ee4.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    opacity: 1.0;
+  }
+</style>
+
+
+<div class="d-flex align-items-center justify-content-center">
+  <div class="card text-center my-4" style="width: 500px;">
+    <div class="card-header">
+      <h5 class="card-title">Your Profile</h5>
+    </div>
+    <div class="card-body p-0 m-0">
+      <div class="card-text">
+        <table class="table table-bordered m-0 p-0" style="font-size: 12px;">
+          <tbody>
+            <tr>
+              <td>First Name</td>
+              <td>{{user1.first_name}}</td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td>{{user1.last_name}}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{user1.email}}</td>
+            </tr>
+            <tr>
+              <td>Contact Number</td>
+              <td>{{user3.contact_no}}</td>
+            </tr>
+            <tr>
+              <td>User Name</td>
+              <td>{{user1.username}}</td>
+            </tr>
+            {% if request.session.role == "As a User" and request.session.id %}
+            <tr>
+              <td>Veg/Nonveg</td>
+              <td>{{user3.vegnonveg}}</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td>{{user3.Age}}</td>
+            </tr>
+            <tr>
+              <td>Your Height</td>
+              <td>{{user3.Height}}</td>
+            </tr>
+            <tr>
+              <td>Your Weight</td>
+              <td>{{user3.Weight}}</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>{{user3.Gender}}</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="{% url 'updateprofile'  pk=request.session.id %}" class="btn btn-primary my-1">Edit Profile</a>
+    </div>
+    {% if msg %}
+    <p style="color:red; text-align: center; padding-top: 50px;">{{msg}} </p>
+    {% endif %}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Veg/Non-Veg</th>
+      <th scope="col">Age</th>
+      <th scope="col">Height</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>{{current_user.first_name}}</td>
+      <td>{{current_user.last_name}}</td>
+      <td>{{current_user.email}}</td>
+      <td>{{current_user.contact_no}}</td>
+      <td>{{current_user.username}}</td>
+      <td>{{current_user.vegnonveg}}</td>
+      <td>{{current_user.Age}}</td>
+      <td>{{current_user.Height}}</td>
+      <td>{{current_user.Weight}}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+{% endblock %}

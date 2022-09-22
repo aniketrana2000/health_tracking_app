@@ -1,0 +1,49 @@
+{% extends "health/base.html" %}
+{% block content %}
+<br>
+<h2 class="text-center my-3"> ADD FOOD DETAILS </h2>
+<br>
+<form action="{% url 'add_daily_food_items' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="food" class="col-sm-2 col-form-label">Food</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="food" name="food" required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="cal" class="col-sm-2 col-form-label">Calorie (KCal)</label>
+      <div class="col-sm-5">
+        <input type="number" class="form-control" id="cal" name="cal" required>
+      </div>
+    </div>
+    <br>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="veg_nonveg" id="gridRadios1" value="veg" checked>
+            <label class="form-check-label" for="gridRadios1">
+              Veg
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="veg_nonveg" id="gridRadios2" value="nonveg">
+            <label class="form-check-label" for="gridRadios2">
+              Non-Veg
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <br>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </form>
+
+{% endblock %}

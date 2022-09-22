@@ -1,0 +1,50 @@
+{% extends "health/base.html" %}
+{% block content %}
+<div class="d-flex m-4">
+   <p>For most adults, an ideal BMI is in the 18.5 to 24.9 range.
+
+      For children and young people aged 2 to 18, the BMI calculation takes into account age and gender as well as height and weight.
+      
+      If your BMI is:
+      
+      below 18.5 – you're in the underweight range
+      between 18.5 and 24.9 – you're in the healthy weight range
+      between 25 and 29.9 – you're in the overweight range
+      between 30 and 39.9 – you're in the obese range
+   
+      BMI takes into account natural variations in body shape, giving a healthy weight range for a particular height.
+
+      As well as measuring your BMI, healthcare professionals may take other factors into account when assessing if you're a healthy weight.
+      
+      Muscle is much denser than fat, so very muscular people, such as heavyweight boxers, weight trainers and athletes, may be a healthy weight even though their BMI is classed as obese.
+      
+      Your ethnic group can also affect your risk of some health conditions. For example, adults of South Asian origin may have a higher risk of some health problems, such as diabetes, with a BMI of 23, which is usually considered healthy.
+      
+      You should not use BMI as a measure if you're pregnant. Get advice from your midwife or GP if you're concerned about your weight.</p>
+   {% load static %}
+   <img src="{% static 'health/image/BMI.2.png' %}" class="ml-4" alt="dummy" height="250">
+</div>
+<div class="text-center border border-3 m-3 p-4">
+   <form action="{% url 'goalbmi' pk=request.session.id %}"  method="POST">
+      {% csrf_token%}
+      <tr>
+         <td>SET GOAL</td>
+         <td><input type="number" name="goalweight" placeholder="Weight in kg" min="1" required></td>
+         <td><input type="submit" value="SUBMIT" /></td>
+      </tr>
+   </form>
+   {% if goalbmi and AIM_BMR %}
+
+   <h4 class="my-4">After achieving your stated goal your BMI will be {{goalbmi}} kg/m2</h4>
+   <h4 class="my-4">After achieving your stated goal your BMR will be {{AIM_BMR}} Kcal/day</h4>
+
+   <a href="{% url 'diet' AIM_BMR=AIM_BMR pk=request.session.id %}" class="btn btn-primary">DIET YOU MUST FOLLOW</a>
+
+   {% endif %}
+
+   {% if msg %}
+   {{msg}}
+   <a href="{% url 'profile' pk=request.session.id %}" class="btn btn-primary">Update Profile</a>
+   {% endif %}
+</div>
+{% endblock %}

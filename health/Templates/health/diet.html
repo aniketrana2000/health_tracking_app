@@ -1,0 +1,49 @@
+{% extends "health/base.html" %}
+{% block content %}
+
+<h1 class="text-center my-4">You can follow the provided diet in order to achieve your goal</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4 p-3">
+    <div class="col">
+        <div class="card text-bg-dark">
+            {% load static %}
+            <img src="{% static 'health/image/breakfast.jpg' %}" height="400" width="200" class="card-img" style="opacity:0.3">
+            <div class="card-img-overlay">
+                <h5 class="card-title">In Breakfast (Calorie contain {{b}} Kcal)</h5>
+                <div class="card-text">
+                {% for e in l1 %}
+                    <ul><li>{{e}}</li></ul>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-bg-dark">
+            {% load static %}
+            <img src="{% static 'health/image/Lunch.jpg' %}" height="400" width="200" class="card-img" style="opacity:0.3">
+            <div class="card-img-overlay">
+                <h5 class="card-title">In Lunch (Calorie contain {{l}} Kcal)</h5>
+                <div class="card-text">
+                    {% for e in l3 %}
+                        <ul><li>{{e}}</li></ul>
+                    {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-bg-dark">
+            {% load static %}
+            <img src="{% static 'health/image/Dinner.jpg' %}" height="400" width="200" class="card-img" style="opacity:0.3">
+            <div class="card-img-overlay">
+                <h5 class="card-title">In Dinner (Calorie contain {{d}} Kcal)</h5>
+                <div class="card-text">
+                    {% for e in l2 %}
+                        <ul><li>{{e}}</li></ul>
+                    {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

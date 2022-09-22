@@ -1,0 +1,25 @@
+{% extends "health/base.html" %}
+{% block content %}
+{% if msg and amount_added %}
+<div><center><h3 style="color:green" > {{amount_added}} Rupees added to your wallet </h3></center></div>
+{% elif msg %}
+<div><center><h3 style="color:red"> {{msg}} </h3></center></div>
+{% endif %}
+<div class="d-flex justify-content-center align-items-center h-100">
+    <div class="container w-50 text-center p-4" style="overflow: hidden;">
+        <h2>
+            <b>Enter amount to be added</b>
+        </h2>
+        <form action="{% url 'balance_added' %}" method="POST" class="m-4">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <input id="balance" name="balance" type="number" min="0" class="form-control text-center" required>
+                <label for="balance">Balance amount</label>
+            </div>
+            <p>
+                <button type="submit" class="btn btn-success" value="SUBMIT">Add Balance</button>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

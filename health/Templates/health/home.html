@@ -1,0 +1,88 @@
+{% extends "health/base.html" %}
+{% block content %}
+
+<style>
+    body {
+      background-image: url('https://i.pinimg.com/736x/cb/58/e4/cb58e4dd22d21d53f3677d551a581ee4.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      opacity: 1.0;
+    }
+    </style>
+
+<center><h1>WELCOME TO FITNESS VISION</h1></center>
+
+<div> <center> {% if request.session.id and expirydate is None %} 
+   <a href="{% url 'subscription' %}" class="btn btn-warning">GET PREMIUM</a>
+{% endif %}
+</center></div>
+
+{% if request.session.id and expirydate %} 
+   <div class="text-center my-4"><a href="{% url 'Trainerlist' %}" class="btn btn-success mx-4">Trainer List</a>
+   <a href="{% url 'Videos1' %}" class="btn btn-warning mx-4">Workout Videos</a>
+   <a href="{% url 'savedvideo' %}" class="btn btn-info mx-4">Saved Videos</a>
+   <a href="{% url 'water_amount' %}" class="btn btn-warning mx-4">Daily Water Intake</a></div>
+
+   
+   
+{% endif %}
+
+
+<div class="d-flex justify-content-center align-items-center p-4 h-80">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="https://www.bing.com/th?id=ATOOL64CD87B14CAF4BCA2D51FD35F25000DCBD01BAB5762305024F6BC195E4960B92&w=384&h=228&c=1&rs=2&o=6&dpr=1.5&pid=SANGAM" class="card-img-top"  height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">CHECK YOUR BMI </h5>
+                    <p class="card-text">Check Your BMI and BMR , But first update your profile</p>
+                    {% if request.session.id %}
+                      <a href="{% url 'bmi' pk=request.session.id %}" class="btn btn-primary">CALCULATE BMI</a>
+                    {% else %}
+                      <a href="" class="btn btn-primary">CALCULATE BMI</a>
+                    {% endif %}
+                       
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../static/health/image/Goal.jpg" class="card-img-top"  height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">SET YOUR GOAL</h5>
+                    <p class="card-text">If you want to change yourself then your goal should be clear</p>
+                    {% if request.session.id %}
+                      <a href="{% url 'goalbmi' pk=request.session.id %}" class="btn btn-primary">SET GOAL</a>
+                    {% else %}
+                    <a href="" class="btn btn-primary">SET GOAL</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../static/health/image/intakecalorie.jpg" class="card-img-top" height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="DAILY INTAKE CALORIE">CHECK YOUR DAILY CALORIE</h5>
+                    <p class="card-text">Check your daily intake calorie by selecting daily food intake</p>
+                    {% if request.session.id %}
+                      <a href="{% url 'foodlist' %}" class="btn btn-primary">CHECK YOUR INTAKE CALORIE</a>
+                    {% else %}
+                    <a href="" class="btn btn-primary">CHECK YOUR INTAKE CALORIE</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% if msg %}
+
+{{msg}}
+
+{% endif %}
+
+
+{% endblock %}

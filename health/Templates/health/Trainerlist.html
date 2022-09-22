@@ -1,0 +1,33 @@
+{% extends "health/base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-success mb-3 text-center">
+        <strong><h1>Trainers</h1></strong>
+      </div>
+    <div class="d-flex justify-content-center">
+        <table class="table table-striped text-center">
+            <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Contact Number</th>
+            <th>Profile</th>
+            </tr>
+            {% for d in user1 %}
+            <tr>
+            <td>{{d.Name}}</td>
+            <td>{{d.Age}}</td>
+            <td>{{d.Gender}}</td>
+            <td>{{d.contact}}</td>
+            <td><a href="{% url 'view_profile' id=d.id %}" class="btn btn-success">Profile</a></td>
+            
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+</div>
+
+
+
+{% endblock %}
+

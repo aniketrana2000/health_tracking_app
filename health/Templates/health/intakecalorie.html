@@ -1,0 +1,54 @@
+{% extends "health/base.html" %}
+{% block content %}
+<style>
+  .table {
+    width: 50%;
+  }
+
+  /* .w-50{
+    width: 50% !important;
+  } */
+</style>
+<form method="POST" action="{% url 'foodlist' %}">
+  {% csrf_token %}
+  <input type="hidden" name="user_id" value={{user_id}}>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex py-4 px-5 w-50">
+      <select name="food" class="form-select me-4" style="text-align-last:center;">
+        <option disabled selected value>---select an option---</option>
+        {% for foods in food %}
+        <option value="{{foods}}">{{ foods }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-warning">Add</button>
+    </div>
+  </div>
+</form>
+
+{% if l %}
+<form action="{% url 'delete_diet' %}" method="POST">
+  {% csrf_token %}
+  <div class="d-flex justify-content-center">
+    <table class="table table-striped text-center" border="2">
+      <tr>
+        <th>Food</th>
+        <th>Calorie (Kcal)</th>
+        <th>Delete</th>
+      </tr>
+      {% for e in data %}
+      <tr>
+        <td>{{e.food}}</td>
+        <td>{{e.calorie}}</td>
+        <input type="hidden" name="length1" value={{l}}>
+        <td><button type="submit" value={{e.id}} class="btn btn-danger" name="cancel">Delete</button></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <br><br>
+
+  <center><b>Total Calorie taken is {{s}} Kcal</b></center>
+  
+  {% endif %}
+
+  {% endblock %}

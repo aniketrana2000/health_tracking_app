@@ -1,0 +1,128 @@
+{% extends "health/base.html" %}
+{% block content %}
+
+<section class="h-100 gradient-form mb-4">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="../static/health/image/logo.png" style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">Add Trainer Details</h4>
+                                </div>
+                                <center>
+                                    <p style="color:red">{{msg}}</p>
+                                </center>
+
+                                <form action="{% url 'add_trainers' %}" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-outline mb-4">
+                                        <input name="name" id="name" class="form-control"
+                                            placeholder="Enter Trainer Name" required />
+                
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="number" name="age" id="age" class="form-control"
+                                            placeholder="Enter Trainer Age" required />
+    
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="tel" name="contact" id="contact" class="form-control"
+                                            placeholder="Enter contact number..." title="must contain 10 digit"
+                                            pattern="[789][0-9]{9}" required />
+            
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+        
+                                        <select class="form-select form-select-sm" name="gender" required>
+                                            <option disabled selected value=""> -- Select gender -- </option>
+                                            <OPTION value="male">Male</OPTION>
+                                            <OPTION value="female">Female</OPTION>
+                                        </select>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="number" name="fees" id="fees" class="form-control"
+                                            placeholder="Enter One months Fees in rupees" required min="0" />
+                
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="number" name="fees1" id="fees1" class="form-control"
+                                            placeholder="Enter Three months Fees in rupees" required min="0"/>
+                
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="number" name="fees2" id="fees2" class="form-control"
+                                            placeholder="Enter One Year Fees in rupees" required min="0" />
+                
+                                    </div>
+                                    <div class="form-outline mb-4">
+        
+                                        <select class="form-select form-select-sm" name="expertise" required>
+                                            <option disabled selected value=""> -- Select Expertise Field -- </option>
+                                            <OPTION value="Gain">Gain</OPTION>
+                                            <OPTION value="Loss">Loss</OPTION>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-outline mb-4">
+                                        <input type=number name="experience" id="experience" class="form-control"
+                                            placeholder="Number of experience" required />
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="file" name="profile" id="profile" class="form-control"
+                                            value={{user3.profile}}>
+                                        <label for="profile">Trainer Profile Picture</label>
+                                    </div>
+
+                                    <div class="text-center pt-1 mb-3 pb-1">
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                            type="submit">Add</button>
+                                    </div>
+                        
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-end gradient-custom-2">
+                            <img src="../static/health/image/adminuser.png" style="width: 450px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

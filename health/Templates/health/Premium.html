@@ -1,0 +1,22 @@
+{% extends "health/base.html" %}
+{% block content %}
+<style>
+    body {
+      background-image: url('https://i.pinimg.com/736x/cb/58/e4/cb58e4dd22d21d53f3677d551a581ee4.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      opacity: 1.0;
+    }
+    </style>
+
+<center><h1>WELCOME TO FITNESS VISION</h1></center>
+{% if request.session.id and expirydate %} 
+   <div class="text-center my-4"><a href="{% url 'Trainerlist' %}" class="btn btn-success mx-4">Trainer List</a>
+   <a href="{% url 'Videos1' %}" class="btn btn-warning mx-4">Workout Videos</a>
+   <a href="{% url 'savedvideo' %}" class="btn btn-info mx-4">Saved Videos</a>
+   <a href="" class="btn btn-warning mx-4">Daily Water Intake</a></div>
+{% endif %}
+
+
+{% endblock %}

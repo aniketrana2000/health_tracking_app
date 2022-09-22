@@ -1,0 +1,81 @@
+{% extends "health/base.html" %}
+{% block content %}
+<style>
+    body {
+      background-image: url('https://t3.ftcdn.net/jpg/03/48/55/20/360_F_348552050_uSbrANL65DNj21FbaCeswpM33mat1Wll.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      opacity: 1.0;
+    }
+    </style>
+
+
+<div class="d-flex justify-content-center align-items-center p-4 h-80">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="https://thehealthytreehouse.com/wp-content/uploads/2020/04/Untitled-design-16.jpg" class="card-img-top"  height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Daily Food Items </h5>
+                    <p class="card-text"> Add/Delete Food Items here, </p>
+                      <a href="{% url 'add_daily_food_items' %}" class="btn btn-primary">Add</a>
+                      <a href="{% url 'daily_food_items' %}" class="btn btn-primary">Delete</a>    
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://ifoodreal.com/wp-content/uploads/2017/09/real-food-list-600.jpg" class="card-img-top"  height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Breakfast Food Items</h5>
+                    <p class="card-text">Add/Delete Breakfast Items here,</p>
+                      <a href="{% url 'add_daily_breakfast_food' %}" class="btn btn-primary">Add</a>
+                      <a href="{% url 'daily_breakfast_food' %}" class="btn btn-primary">Delete</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://2rdnmg1qbg403gumla1v9i2h-wpengine.netdna-ssl.com/wp-content/uploads/sites/3/2021/01/fastFoods1-1199461884-770x533-1-650x428.jpg" class="card-img-top" height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Lunch Food Items</h5>
+                    <p class="card-text">Add/Delete Lunch Items here,</p>
+                      <a href="{% url 'add_daily_lunch_food' %}" class="btn btn-primary">Add</a>
+                      <a href="{% url 'daily_lunch_food' %}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://englishwithjeff.com/wp-content/uploads/2021/07/food-clip-art-22.jpg" class="card-img-top" height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Dinner Food Items</h5>
+                    <p class="card-text">Add/Delete Dinner Items here,</p>
+                      <a href="{% url 'add_daily_dinner_food' %}" class="btn btn-primary">Add</a>
+                      <a href="{% url 'daily_dinner_food' %}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://video.link/img/safe-youtube-videos-og-image_vl.png" class="card-img-top" height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Videos</h5>
+                    <p class="card-text">Add/Delete Fitness Videos here,</p>
+                      <a href="{% url 'add_videos' %}" class="btn btn-primary">Add</a>
+                      <a href="{% url 'allvideos' %}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if msg %}
+
+{{msg}}
+
+{% endif %}
+
+
+{% endblock %}

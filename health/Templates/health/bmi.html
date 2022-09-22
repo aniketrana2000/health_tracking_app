@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+{% block content %} 
+
+{% if bmi <= 18.5 %}
+   <h1> Your BMI is {{bmi}},which means you are underweight.</h1>
+{% elif bmi > 18.5 and bmi <= 25 %}
+   <h1> Your BMI is {{bmi}},which means you are normal.</h1>
+{% elif bmi > 25 and bmi <= 30 %}
+   <h1> Your BMI is {{bmi}},which means you are overweight.</h1>
+{% elif bmi > 30 %}
+   <h1> Your BMI is {{bmi}},which means you are obese.</h1>
+{% else %}
+   <h1>Please update Your Profile </h1>
+{% endif %}
+<h1>Your Current BMR is {{CURRENT_BMR}}</h1>
+<br>
+<br>
+
+<h1>You BMI Goal is {{goalbmi}}</h1>
+<h1>Your AIM BMR is {{AIM_BMR}}</h1>
+
+{% endblock %}

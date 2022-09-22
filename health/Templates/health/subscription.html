@@ -1,0 +1,41 @@
+{% extends "health/base.html" %}
+{% block content %}
+<style>
+    body {
+      background-image: url('https://www.thecodefitness.com/wp-content/uploads/2021/06/The-Premium-Gym-1024x576.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      opacity: 1.0;
+    }
+  </style>
+
+<div> <center>
+<div class="d-flex justify-content-center align-items-center">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="https://freerangestock.com/sample/54284/membership-card-shows-very-important-person-and-celebrity.jpg" class="card-img-top"  height="200" width="100" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Premium Membership </h5>
+                    <p class="card-text">Get More Benifits</p>
+    
+                <form action="{% url 'checkbalance' id=request.session.id%}" Method="POST">
+                    {% csrf_token %}
+                   
+                    <div class="d-flex flex-column align-items-sm-start mb-4">
+                    <div><input type="radio" name="subscription" value=199> Three month plan(₹199)</div>
+                    <div><input type="radio" name="subscription" value=350> Six month plan(₹349)</div>
+                    <div><input type="radio" name="subscription" value=999> one year plan(₹999)</div>
+                    </div>
+                    <p>
+                        <button type="submit" class="btn btn-success" value="SUBMIT">PAYMENT</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+</div>
+</center>
+</div>
+                    
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends "health/base.html" %}
+{% block content %}
+<style>
+   body {
+     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIL2kc2nV1RB1nibpdBminCLanVyAB0seOg&usqp=CAU');
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: 100% 100%;
+     opacity: 1.0;
+   }
+   </style>
+<div class="text-center border border-3 m-3 p-4">
+{% if bmi %}
+
+ {% if bmi <= 18.5 %}
+   <h2> Your BMI is {{bmi}} kg/m2,which means you are underweight.</h2>
+ {% elif bmi > 18.5 and bmi <= 25 %}
+   <h2> Your BMI is {{bmi}} kg/m2,which means you are normal.</h2>
+ {% elif bmi > 25 and bmi <= 30 %} 
+    <h2> Your BMI is {{bmi}} kg/m2,which means you are overweight.</h2>
+ {% elif bmi > 30 %}
+   <h2> Your BMI is {{bmi}} kg/m2,which means you are obese.</h2>
+ {% else %}
+   <h2>Please update Your Profile for calculating your BMI......</h2>
+ {% endif %}
+ <h2>Your Current BMR is {{CURRENT_BMR}} Kcal/day</h2><br><br>
+ {% load static %}
+ <img src="{% static 'health/image/BMI.2.png' %}" height="300" width="380" alt="dummy">
+{% endif %}
+
+{% if msg %}
+   <p style="color:red; text-align: center; padding-top: 50px;">{{msg}} </p> 
+   <a href="{% url 'profile' pk=request.session.id %}" class="btn btn-primary">Update Profile</a>  
+{% endif %}
+
+</div>
+
+{% endblock %}

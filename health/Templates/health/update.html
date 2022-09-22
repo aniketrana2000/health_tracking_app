@@ -1,0 +1,66 @@
+{% extends "health/base.html" %}
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-center">
+  <div class="card text-center my-4" style="width: 500px;">
+    <div class="card-header">
+      <h5 class="card-title">Update Your Profile</h5>
+    </div>
+    <div class="card-body p-0 m-0">
+      <div class="card-text">
+        <form action="{% url 'updateprofile'  pk=request.session.id %}" method="POST">
+          {% csrf_token %}
+        <table class="table table-bordered m-0 p-0" style="font-size: 12px;">
+          <tbody>
+            <tr>
+              <td>First Name</td>
+              <td><input name="first_name" value={{user1.first_name}} required></td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td><input name="last_name" value={{user1.last_name}} required></td>
+            </tr>
+            <tr>
+                <td>Contact no</td>
+                <td><input type="tel" name="contact_no" pattern="[789][0-9]{9}" title="exact 10 numbers" value={{user3.contact_no}} required></td>
+              </tr>
+            <tr>
+                <td>User Name</td>
+                <td><input name="username" value={{user1.username}} required></td>
+            </tr>
+            {% if request.session.role == "As a User" and request.session.id %}
+            <tr>
+              <td>Preference</td>
+              <td><SELECT name="vegnonveg" id="vegnonveg" re>
+                <option disabled selected value> -- select an option -- </option>
+                <OPTION value="veg">Veg</OPTION>
+                <OPTION value="nonveg">Non-veg</OPTION>
+            </SELECT></td>
+            </tr>
+            <tr>
+              <td>Age (in yrs)</td>
+              <td><input type="number" name="Age" min="1" required></td>
+            </tr>
+            <tr>
+              <td>Height (in cm)</td>
+              <td><input type="number" name="Height" min="1" required></td>
+            </tr>
+            <tr>
+              <td>Weight (in kg)</td>
+              <td><input type="number" name="Weight" min="1" required></td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer">
+        <input type="submit" value="SUBMIT" class="btn btn-success"/>
+    </div>
+</form>
+    {% if msg %}
+    <p style="color:red; text-align: center; padding-top: 50px;">{{msg}} </p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

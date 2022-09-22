@@ -1,0 +1,81 @@
+{% extends "health/base.html" %}
+{% block content %}
+
+<section class="h-100 gradient-form mb-4">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="../static/health/image/logo.png" style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">Add Videos</h4>
+                                </div>
+                                <center>
+                                    <p style="color:red">{{msg}}</p>
+                                </center>
+
+                                <form action="{% url 'add_videos' %}" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-outline mb-4">
+                                        <input name="link" id="link" class="form-control"
+                                            placeholder="Enter Full Link Here " required />
+                                        
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input name="field" id="field" class="form-control"
+                                        placeholder="Enter Field here" required />
+
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="file" name="thumbnail" id="thumbnail"
+                                         placeholder="Insert Thumbnail" required/>
+                                </div>
+                                <div class="text-center pt-1 mb-3 pb-1">
+                                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                        type="submit">Add</button>
+                                </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-end gradient-custom-2">
+                            <img src="https://video.link/img/safe-youtube-videos-og-image_vl.png" style="width: 450px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
